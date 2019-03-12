@@ -1,0 +1,14 @@
+.game {
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  font-size: 7vw;
+  padding: 1em;
+}
+
+.character {
+  font-size: 7vw;
+  padding: 1em;
+}
