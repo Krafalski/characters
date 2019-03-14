@@ -6,6 +6,7 @@ class Character {
   constructor (name, character){
     this.name = name
     this.character= character
+    // debugger
   }
 }
 
@@ -46,7 +47,8 @@ const shuffle = array => {
 const round = pair => {
   let $character = $('.character')
   let $name = $('.name')
-  $character.text(pair.character).css('opacity', 0)
+  $character.text(pair.character)
+    // .css('opacity', 0)
   $name.text(pair.name)
   console.log('round', pair);
 }
