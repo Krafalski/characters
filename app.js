@@ -1,29 +1,47 @@
 let playArray = []
 let name = ''
 let character = ''
+let inPlay = {}
+let playPosition = 0
 
 class Character {
   constructor (name, character){
-    this.name = name
-    this.character= character
-    // debugger
+    this.character = character
+    this.key = name
+    this.name = this.reformatName(name)
+    this.correct = null
   }
+  reformatName (name) {
+    const rename = name.split('')
+    const testForCaps = /[A-Z]/
+    const newName = rename.map(l => {
+      if (testForCaps.test(l)) {
+        l = ` ${l.toLowerCase()}`
+      }
+      return l
+    })
+
+    return newName.join('')
+  }
+  checkInput (input) {
+    this.correct = (input === this.character) ? true : false
+  }
+}
+
+// return valid play
+const validPlay = () => {
+  // unique set
 }
 
 const newGame = () => {
   playArray = []
 
   for (let character in dictionary) {
-    const newName = reformatName(character)
-    playArray.push(new Character(newName, dictionary[character]))
+    playArray.push(new Character(character, dictionary[character]))
   }
   shuffle(playArray)
-  round(playArray[0])
-}
-
-const reformatName = name => {
-  return name
-  // console.log(name.toUpperCase())
+  inPlay = playArray[0]
+  round()
 }
 
 // fisher-yates shuffle
@@ -44,20 +62,35 @@ const shuffle = array => {
   return array;
 }
 
-const round = pair => {
+const round = () => {
   let $character = $('.character')
   let $name = $('.name')
-  $character.text(pair.character)
+  $character.text(inPlay.character)
     // .css('opacity', 0)
-  $name.text(pair.name)
-  console.log('round', pair);
+  $name.text(inPlay.name)
+ 
 }
 
-const checkPair = letter => {
+const nextRound = () => {
+  if(playArray.length - 1 > playPosition) {
+    playPosition ++
+    inPlay = playArray[playPosition]
+    round(inPlay)
+    console.log(playArray.length, playPosition); 
+  } else {
+    alert('all done')
+    console.log(playArray.length, playPosition);     
+  } 
+}
+
+const checkPair = () => {
   if (event.key !== 'Shift') {
-    console.log(event.key);
+    inPlay.checkInput(event.key)
+    nextRound()
   }
 }
+
+
 
 
 $(()=>{
