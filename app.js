@@ -10,6 +10,7 @@ class Character {
     this.key = name
     this.name = this.reformatName(name)
     this.correct = null
+    this.play = ''
   }
   reformatName (name) {
     const rename = name.split('')
@@ -24,15 +25,29 @@ class Character {
     return newName.join('')
   }
   checkInput (input) {
-    this.correct = (input === this.character) ? true : false
+    this.play = input
+    this.correct = (input === this.character) ? true : false   
   }
 }
 
 // return valid play
-const validPlay = () => {
-  // unique set
+const allowPlay = keyPress => {
+  const letterCheck = /[a-z0-9]/i
+  let specialKeys = ['Escape' , 'CapsLock', 'Shift', 'Control', 'Alt', 'Meta', 'Backspace', 'Enter']
+  if (letterCheck.test(keyPress)) {
+    console.log('nope', keyPress)
+    return false
+  }
+  for (let press of specialKeys ) {
+    if (press === keyPress) {
+      console.log('nope', keyPress)
+      return false
+    }
+  }
+  return true
 }
 
+allowPlay()
 const newGame = () => {
   playArray = []
 
@@ -79,12 +94,13 @@ const nextRound = () => {
     console.log(playArray.length, playPosition); 
   } else {
     alert('all done')
-    console.log(playArray.length, playPosition);     
+    console.log(playArray);     
   } 
 }
 
 const checkPair = () => {
-  if (event.key !== 'Shift') {
+  console.log(event.key)
+  if (allowPlay(event.key)) {
     inPlay.checkInput(event.key)
     nextRound()
   }
