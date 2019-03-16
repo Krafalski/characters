@@ -3,6 +3,7 @@ let name = ''
 let character = ''
 let inPlay = {}
 let playPosition = 0
+let score = 0
 
 class Character {
   constructor (name, character){
@@ -21,12 +22,12 @@ class Character {
       }
       return l
     })
-
     return newName.join('')
   }
   checkInput (input) {
     this.play = input
-    this.correct = (input === this.character) ? true : false   
+    this.correct = (input === this.character) ? true : false  
+    if(this.correct) score ++ 
   }
 }
 
@@ -35,19 +36,16 @@ const allowPlay = keyPress => {
   const letterCheck = /[a-z0-9]/i
   let specialKeys = ['Escape' , 'CapsLock', 'Shift', 'Control', 'Alt', 'Meta', 'Backspace', 'Enter']
   if (letterCheck.test(keyPress)) {
-    console.log('nope', keyPress)
     return false
   }
   for (let press of specialKeys ) {
     if (press === keyPress) {
-      console.log('nope', keyPress)
       return false
     }
   }
   return true
 }
 
-allowPlay()
 const newGame = () => {
   playArray = []
 
@@ -56,7 +54,7 @@ const newGame = () => {
   }
   shuffle(playArray)
   inPlay = playArray[0]
-  round()
+  loadRound()
 }
 
 // fisher-yates shuffle
@@ -77,21 +75,12 @@ const shuffle = array => {
   return array;
 }
 
-const round = () => {
-  let $character = $('.character')
-  let $name = $('.name')
-  $character.text(inPlay.character)
-    // .css('opacity', 0)
-  $name.text(inPlay.name)
- 
-}
 
 const nextRound = () => {
   if(playArray.length - 1 > playPosition) {
     playPosition ++
     inPlay = playArray[playPosition]
-    round(inPlay)
-    console.log(playArray.length, playPosition); 
+    loadRound()
   } else {
     alert('all done')
     console.log(playArray);     
@@ -99,17 +88,12 @@ const nextRound = () => {
 }
 
 const checkPair = () => {
-  console.log(event.key)
   if (allowPlay(event.key)) {
     inPlay.checkInput(event.key)
     nextRound()
+    loadRound()
   }
 }
 
 
 
-
-$(()=>{
-   newGame()
-   $('body').keyup(checkPair)
-})

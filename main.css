@@ -1,14 +1,85 @@
+/* * {
+  border: 1px solid gold;
+} */
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.cont {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  vertical-align: top;
+  margin-top: -5.5em;
+}
+
+h4 {
+  font-size: 6vw;
+}
+
+header, footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4ems;
+  /* border: 1px solid red; */
+  color: gray;
+}
+
+h1 {
+  font-size: 5vw;
+  color: gray;
+}
+
+li, h5 {
+  font-size: 3vw;
+  list-style: none;
+}
+li:hover {
+  color: gainsboro;
+}
+.remaining {
+  color: darkgrey;
+}
+.remaining span {
+  color: dimgray;
+}
+.remaining:hover {
+  color: gray;
+}
+.correct {
+  margin: .5em;
+  font-size: 4vw;
+  verticle-align: center;
+}
+
+.start {
+  border: 2px solid gainsboro;
+  padding: 2em;
+  margin: .5em;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 2vw;
+}
+
+.start:focus, .start:active {
+  outline:0;
+}
+
 .game {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  align-items: center;
 }
 
-.name {
-  font-size: 7vw;
+.name, .character {
+  font-size: 6vw;
   padding: 1em;
-}
-
-.character {
-  font-size: 7vw;
-  padding: 1em;
+  white-space: nowrap;
 }
