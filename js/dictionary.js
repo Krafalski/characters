@@ -66,5 +66,7 @@ const dictionary = {
   dot: '.',
   questionMark: '?',
   slash: '/',
-  forwardSlash: '/'
+  forwardSlash: '/',
+  division: '/',
+  divideBy: '/'
 }
