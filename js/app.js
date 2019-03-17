@@ -122,8 +122,7 @@ const nextRound = () => {
     playPosition ++
     inPlay = playArray[playPosition]
     loadRound()
-  } else {
-    alert('all done')   
+  } else {  
     // show wrong dictionary
     dictionaryModal('wrong')
     newGame()

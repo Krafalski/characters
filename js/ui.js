@@ -8,26 +8,22 @@ const loadRound = () => {
     $('.remaining > span').text(playArray.length - playPosition)
   }
   
-  const buildModal = () => {
-
-  }
-
   const openModal = () => {
     $('.modal').show().on('click', () => {
       $('.modal').hide()
     })
   }
   const aboutModal = () => {
-    $('.modal-content').html(`
+    $('.modal-content').empty().html(`
       <h2>About</h2>
-      <p>This project is to help people learn the keyboard character keys they may not be used to. Espcially, when they just start coding</p>
+      <p>This project is to help people learn the keyboard character keys they may not be used to using. Espcially, when they just start coding</p>
     `)
     openModal()
   }
   const howModal = () => {
-    $('.modal-content').html(`
+    $('.modal-content').empty().html(`
     <h2>How to Play</h2>
-    <p>The name of the character appears in black. Just type the character. Don't forget the shift key as needed!</p>
+    <p>The name of the character appears in black. Just type the character. Don't forget to use the shift key, as needed!</p>
     <p>Charcters can have multiple names, so you can enter the same character multiple times</p>
     <p>For characters that are pairs, like parenthesis (), only type the opening one.</p>
     <p>Your total correct guesses appear in the upper right</p>
@@ -39,6 +35,7 @@ const loadRound = () => {
   const dictionaryModal = type => {
     let $table
     let $h2
+    const $content = $('.modal-content')
     if (type === 'name' || !type) {
       const displayDictionary = dictionarySortByName(dictionary)
       $table = tableBuilder(displayDictionary)
@@ -46,16 +43,23 @@ const loadRound = () => {
       const displayDictionary = dictionarySortByCharacter(dictionary)
       $table = tableBuilder(displayDictionary)
     } else if (type ==='wrong') {
-      const $h2 = $('<h2>').text('Nice job! Here are some characters to review')
+
       const displayDictionary = dictionarySortByName(wrongGuesses)
       $table = tableBuilder(displayDictionary)
-      $('.modal-content').append($h2)
+      $content.append($h2)
     }else  {
       const displayDictionary = dictionarySortByName(dictionary)
       $table = tableBuilder(displayDictionary)
     }
+    if (type===
+      'wrong'){
+      $content.empty()
+      const $h2 = $('<h2>').text('Nice job! Here are some characters to review')
+      $content.append($h2, $table)
+    } else {
+      $content.empty().append($table)
+    }
 
-    $('.modal-content').append($table)
     openModal()
   }
   const reviewModal = () => {
