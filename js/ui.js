@@ -8,8 +8,25 @@ const loadRound = () => {
     $('.remaining > span').text(playArray.length - playPosition)
   }
   
+  const aboutModal = () => {
+
+  }
+  const howModal = () => {
+
+  }
+
+  const dictionaryModal = () => {
+
+  }
+  const reviewModal = () => {
+
+  }
   $(()=>{
     newGame()
     $('body').keyup(checkPair)
     $('.start').on('click', newGame)
+    // $('#about').on('click', aboutModal)
+    // $('#how').on('click', howModal)
+    // $('#dictionary').on('click', dictionaryModal)
+    // $('#review').on('click', reviewModal)
   })

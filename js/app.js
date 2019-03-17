@@ -48,12 +48,13 @@ const allowPlay = keyPress => {
 
 const newGame = () => {
   playArray = []
-
   for (let character in dictionary) {
     playArray.push(new Character(character, dictionary[character]))
   }
+  console.log(playArray)
   shuffle(playArray)
   inPlay = playArray[0]
+  console.log(inPlay)
   loadRound()
 }
 
