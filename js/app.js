@@ -4,6 +4,7 @@ let character = ''
 let inPlay = {}
 let playPosition = 0
 let score = 0
+let wrongGuesses = {}
 
 class Character {
   constructor (name, character){
@@ -86,6 +87,9 @@ const allowPlay = keyPress => {
 
 const newGame = () => {
   playArray = []
+  playPosition = 0
+  score = 0
+  wrongGuesses = {}
   for (let character in dictionary) {
     playArray.push(new Character(character, dictionary[character]))
   }
@@ -120,12 +124,20 @@ const nextRound = () => {
     loadRound()
   } else {
     alert('all done')   
+    // show wrong dictionary
+    dictionaryModal('wrong')
+    newGame()
   } 
 }
 
 const checkPair = () => {
   if (allowPlay(event.key)) {
     inPlay.checkInput(event.key)
+    if(!inPlay.correct) {
+      wrongGuesses[inPlay.name] = inPlay.character
+      console.log(wrongGuesses);
+       
+    }
     nextRound()
     loadRound()
   }

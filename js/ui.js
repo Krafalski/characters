@@ -37,15 +37,20 @@ const loadRound = () => {
   }
 
   const dictionaryModal = type => {
-    // $('<h2>').text('')
-    let $table;
+    let $table
+    let $h2
     if (type === 'name' || !type) {
       const displayDictionary = dictionarySortByName(dictionary)
       $table = tableBuilder(displayDictionary)
     } else if (type === 'character') {
       const displayDictionary = dictionarySortByCharacter(dictionary)
       $table = tableBuilder(displayDictionary)
-    } else  {
+    } else if (type ==='wrong') {
+      const $h2 = $('<h2>').text('Nice job, here are some characters to review')
+      const displayDictionary = dictionarySortByName(wrongGuesses)
+      $table = tableBuilder(displayDictionary)
+      $('.modal-content').append($h2)
+    }else  {
       const displayDictionary = dictionarySortByName(dictionary)
       $table = tableBuilder(displayDictionary)
     }
