@@ -178,7 +178,8 @@ const nextRound = () => {
 // checks for correcy play
 // triggers jQuery DOM updates based on play
 const checkPair = () => {
-  $('body').css('background', 'ghostwhite').off('keyup')
+  // only log one answer until timeouts are complete
+  turnOffPlay()
   if (allowPlay(event.key)) {
     inPlay.checkInput(event.key)
 
@@ -190,6 +191,7 @@ const checkPair = () => {
     }
     setTimeout(nextRound, 2000)
     setTimeout(loadRound, 2001)
+    // start logging key presses again
     setTimeout(turnOnPlay, 2002)
   }
 }

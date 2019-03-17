@@ -127,7 +127,9 @@ const tableBuilder = (dictionaryInput) => {
   }
   return $table
 }
-
+const turnOffPlay = () => {
+  $('body').css('background', 'ghostwhite').off('keyup')
+}
 const turnOnPlay = () => {
   $('body').css('background', 'white').on('keyup', checkPair)
 }
