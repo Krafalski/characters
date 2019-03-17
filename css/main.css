@@ -1,9 +1,10 @@
 
 body {
   display: flex;
-  min-height: 100vh;
+  min-height: 95vh;
   flex-direction: column;
   margin: .5em 1em;
+  font-family: 'Lato', sans-serif;
 }
 
 h1 {
@@ -65,15 +66,20 @@ header, footer {
 
 .start {
   border: 2px solid gainsboro;
-  padding: 2em;
+  padding: 1.5em;
   margin: .5em;
   font-size: .75em;
   display: flex;
   align-items: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .start span {
-  margin-top: -1.25em;
+  /* margin-top: -1.25em; */
+  font-family: 'Lato', sans-serif;
+}
+.start:hover {
+  background-color: gainsboro;
 }
 
 .start:focus, .start:active {
