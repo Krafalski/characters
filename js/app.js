@@ -49,7 +49,12 @@ class Character {
       }
     } else {
       this.correct = (input === this.character)
-      if (this.correct) score++
+      if (this.correct){
+        score++
+      } else {
+        console.log('correct answer:', this.character)
+        console.log('your input:', event.key)
+      }
     }
   }
 }
@@ -176,6 +181,7 @@ const checkPair = () => {
   $('body').css('background', 'ghostwhite').off('keyup')
   if (allowPlay(event.key)) {
     inPlay.checkInput(event.key)
+
     if (!inPlay.correct) {
       wrongGuesses[inPlay.name] = inPlay.character
       animateWrong()
