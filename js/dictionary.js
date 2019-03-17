@@ -28,6 +28,7 @@ const dictionary = {
   star: '*',
   wildcard: '*',
   multiply: '*',
+  times: '*'
   parentheses: '(',
   roundBracket: '(',
   hyphen: '-',
