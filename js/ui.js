@@ -29,6 +29,7 @@ const loadRound = () => {
     <h2>How to Play</h2>
     <p>The name of the character appears in black. Just type the character. Don't forget the shift key as needed!</p>
     <p>Charcters can have multiple names, so you can enter the same character multiple times</p>
+    <p>For characters that are pairs, like parenthesis (), only type the opening one.</p>
     <p>Your total correct guesses appear in the upper right</p>
     <p>The remaining characters to guess appears on the bottom left</p>
   `)
@@ -71,7 +72,6 @@ const loadRound = () => {
     $tableHeader.append($tableHeaderName, $tableHeaderCharacter)
     $table.append($tableHeader)
     for (let character in dictionaryInput) {
-      // console.log('build', character, dictionaryInput[character])
      const $tr =  $('<tr>').html(`
         <td>${reformatNameForModal(character)}</td>
         <td>${dictionaryInput[character]}</td>
