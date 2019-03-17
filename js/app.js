@@ -135,8 +135,6 @@ const checkPair = () => {
     inPlay.checkInput(event.key)
     if(!inPlay.correct) {
       wrongGuesses[inPlay.name] = inPlay.character
-      console.log(wrongGuesses);
-       
     }
     nextRound()
     loadRound()

@@ -46,7 +46,7 @@ const loadRound = () => {
       const displayDictionary = dictionarySortByCharacter(dictionary)
       $table = tableBuilder(displayDictionary)
     } else if (type ==='wrong') {
-      const $h2 = $('<h2>').text('Nice job, here are some characters to review')
+      const $h2 = $('<h2>').text('Nice job! Here are some characters to review')
       const displayDictionary = dictionarySortByName(wrongGuesses)
       $table = tableBuilder(displayDictionary)
       $('.modal-content').append($h2)
