@@ -1,5 +1,4 @@
 /* global dictionary loadRound dictionaryModal event animateWrong animateCorrect */
-/* exported score  dictionarySortByName reformatNameForModal */
 let playArray = []
 let inPlay = {}
 let playPosition = 0
