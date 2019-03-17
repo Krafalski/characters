@@ -8,6 +8,13 @@ const loadRound = () => {
     $('.remaining > span').text(playArray.length - playPosition)
   }
   
+  const animateCorrect = () => {
+    $('.character').css({'opacity': 1, 'color': 'turquoise'})
+  }
+
+  const animateWrong= () => {
+    $('.character').css({'opacity': 1, 'color': 'firebrick'})
+  }
   const openModal = () => {
     $('.modal').show().on('click', () => {
       $('.modal').hide()

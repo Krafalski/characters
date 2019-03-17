@@ -134,9 +134,16 @@ const checkPair = () => {
     inPlay.checkInput(event.key)
     if(!inPlay.correct) {
       wrongGuesses[inPlay.name] = inPlay.character
+      // wrong animation
+      animateWrong()
+    } else {
+      //right animation
+      animateCorrect()
     }
-    nextRound()
-    loadRound()
+
+    setTimeout(nextRound, 1000)
+    setTimeout(loadRound, 1001)
+    
   }
 }
 
