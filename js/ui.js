@@ -16,11 +16,13 @@ const loadRound = () => {
 // simple aninmation on correct guess
 const animateCorrect = () => {
   $('.character').css({ 'opacity': 1, 'color': 'turquoise' })
+  $('.name')
 }
 
 // simple animation on wrong guess
 const animateWrong = () => {
   $('.character').css({ 'opacity': 1, 'color': 'firebrick' })
+  $('.name')
 }
 const openModal = () => {
   $('.modal').show().on('click', () => {
@@ -42,6 +44,7 @@ const howModal = () => {
   $('.modal-content').empty().html(`
   <h2>How to Play</h2>
   <p>The name of the character appears in black. Just type the character. Don't forget to use the shift key, as needed!</p>
+  <p>You only get one chance per letter. At the end of the game you'll get to reivew the ones you got wrong.</p>
   <p>Charcters can have multiple names, so you can enter the same character multiple times</p>
   <p>For characters that are pairs, like parenthesis (), only type the opening one.</p>
   <p>Your total correct guesses appear in the upper right</p>
@@ -125,10 +128,15 @@ const tableBuilder = (dictionaryInput) => {
   return $table
 }
 
+const turnOnPlay = () => {
+  $('body').css('background', 'white').on('keyup', checkPair)
+}
+
 // document on ready - make sure page loads before selecting these items
 $(() => {
+
   newGame()
-  $('body').keyup(checkPair)
+  $('body').on('keyup', checkPair)
   $('.start').on('click', newGame)
   $('#about').on('click', aboutModal)
   $('#how').on('click', howModal)

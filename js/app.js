@@ -173,6 +173,7 @@ const nextRound = () => {
 // checks for correcy play
 // triggers jQuery DOM updates based on play
 const checkPair = () => {
+  $('body').css('background', 'ghostwhite').off('keyup')
   if (allowPlay(event.key)) {
     inPlay.checkInput(event.key)
     if (!inPlay.correct) {
@@ -181,7 +182,8 @@ const checkPair = () => {
     } else {
       animateCorrect()
     }
-    setTimeout(nextRound, 1000)
-    setTimeout(loadRound, 1001)
+    setTimeout(nextRound, 2000)
+    setTimeout(loadRound, 2001)
+    setTimeout(turnOnPlay, 2002)
   }
 }
