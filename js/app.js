@@ -53,20 +53,18 @@ const dictionarySortByName = (unsortedDictionary) => {
 }
 
 // https://stackoverflow.com/questions/1069666/sorting-javascript-object-by-property-value
-async function dictionarySortByCharacter () {
-  console.log('by char')
+const dictionarySortByCharacter = (unsortedDicitonary) => {
   const sortable = []
-  for (let char in dictionary) {
-    sortable.push([char, dictionary[char]])
+  for (let char in unsortedDicitonary) {
+    sortable.push([char, unsortedDicitonary[char]])
   }
   sortable.sort((a,b) => {
-    // console.log(a[1])
     return a[1] - b[1]
   })
-  const sortedDictionary = await sortable.map(name => {
-    // console.log({[name[0]]: name[1]})
-    return {[name[0]]: name[1]}
-  })
+  const sortedDictionary = {}
+    sortable.forEach(charObj => {
+      sortedDictionary[charObj[0]] = charObj[1]
+    })
   return sortedDictionary
 }
 

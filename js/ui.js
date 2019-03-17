@@ -65,7 +65,6 @@ const loadRound = () => {
     })
     const $tableHeaderCharacter = $('<th>').text('character').on('mouseenter',()=>{
       $('.modal-content').empty()
-      dictionarySortByCharacter()
       dictionaryModal('character')
 
     })
