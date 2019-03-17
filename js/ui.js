@@ -35,10 +35,20 @@ const loadRound = () => {
     openModal()
   }
 
-  const dictionaryModal = () => {
+  const dictionaryModal = type => {
     // $('<h2>').text('')
-    const displayDictionary = dictionarySortByName(dictionary)
-    const $table = tableBuilder(displayDictionary)
+    let $table;
+    if (type === 'name' || !type) {
+      const displayDictionary = dictionarySortByName(dictionary)
+      $table = tableBuilder(displayDictionary)
+    } else if (type === 'character') {
+      const displayDictionary = dictionarySortByCharacter(dictionary)
+      $table = tableBuilder(displayDictionary)
+    } else  {
+      const displayDictionary = dictionarySortByName(dictionary)
+      $table = tableBuilder(displayDictionary)
+    }
+
     $('.modal-content').append($table)
     openModal()
   }
@@ -47,23 +57,22 @@ const loadRound = () => {
   }
 
   const tableBuilder = (dictionaryInput) => {
-    console.log(dictionaryInput)
     const $table = $('<table>')
     const $tableHeader = $('<tr>')
     const $tableHeaderName = $('<th>').text('name').on('mouseenter',()=>{
       $('.modal-content').empty()   
-      dictionaryModal()
+      dictionaryModal('name')
     })
     const $tableHeaderCharacter = $('<th>').text('character').on('mouseenter',()=>{
       $('.modal-content').empty()
       dictionarySortByCharacter()
-      dictionaryModal()
+      dictionaryModal('character')
 
     })
     $tableHeader.append($tableHeaderName, $tableHeaderCharacter)
     $table.append($tableHeader)
     for (let character in dictionaryInput) {
-      console.log('build', character, dictionaryInput[character])
+      // console.log('build', character, dictionaryInput[character])
      const $tr =  $('<tr>').html(`
         <td>${reformatNameForModal(character)}</td>
         <td>${dictionaryInput[character]}</td>
