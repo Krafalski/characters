@@ -1,12 +1,42 @@
-/* * {
-  border: 1px solid gold;
-} */
 
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin: .5em 1em;
 }
+
+h1 {
+  font-size: 5vw;
+  color: gray;
+}
+
+h2 {
+  text-align: center;
+}
+
+h4 {
+  font-size: 6vw;
+}
+
+li, h5 {
+  font-size: 3vw;
+  list-style: none;
+}
+li:hover {
+  color: gainsboro;
+}
+
+header, footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4ems;
+  color: gray;
+}
+
+
+
 .cont {
   flex: 1;
   display: flex;
@@ -18,31 +48,6 @@ body {
   margin-top: -5.5em;
 }
 
-h4 {
-  font-size: 6vw;
-}
-
-header, footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 4ems;
-  /* border: 1px solid red; */
-  color: gray;
-}
-
-h1 {
-  font-size: 5vw;
-  color: gray;
-}
-
-li, h5 {
-  font-size: 3vw;
-  list-style: none;
-}
-li:hover {
-  color: gainsboro;
-}
 .remaining {
   color: darkgrey;
 }
@@ -62,9 +67,13 @@ li:hover {
   border: 2px solid gainsboro;
   padding: 2em;
   margin: .5em;
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 2vw;
+  font-size: .75em;
+  display: flex;
+  align-items: center;
+}
+
+.start span {
+  margin-top: -1.25em;
 }
 
 .start:focus, .start:active {
