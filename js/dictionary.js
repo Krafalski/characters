@@ -54,7 +54,7 @@ const dictionary = {
   apostrophe: "'",
   singleQuote: "'",
   dumbQuote: "'",
-  smartQuote: '‘',
+  smartQuote: '‘ “',
   quotation: '"',
   doubleQuote: '"',
   lessThan: '<',
