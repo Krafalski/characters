@@ -1,4 +1,8 @@
 /* global $ inPlay playArray score playPosition dictionary wrongGuesses */
+
+// uses inPlay global variable to load character onto browser
+// adds character to page as well but sets opacity to 0
+// this helps keep name and charactrers in consisent place through round
 const loadRound = () => {
   let $character = $('.character')
   let $name = $('.name')
@@ -9,10 +13,12 @@ const loadRound = () => {
   $('.remaining > span').text(playArray.length - playPosition)
 }
 
+// simple aninmation on correct guess
 const animateCorrect = () => {
   $('.character').css({ 'opacity': 1, 'color': 'turquoise' })
 }
 
+// simple animation on wrong guess
 const animateWrong = () => {
   $('.character').css({ 'opacity': 1, 'color': 'firebrick' })
 }
@@ -22,6 +28,7 @@ const openModal = () => {
   })
 }
 
+// on click about this modal opens
 const aboutModal = () => {
   $('.modal-content').empty().html(`
     <h2>About</h2>
@@ -30,6 +37,7 @@ const aboutModal = () => {
   openModal()
 }
 
+// on click how to play, this modal opens
 const howModal = () => {
   $('.modal-content').empty().html(`
   <h2>How to Play</h2>
@@ -42,6 +50,10 @@ const howModal = () => {
   openModal()
 }
 
+// loads a table view of characters based on user interaction
+// whole dicitonary alphabelticlly by name
+// whole dictionary by charcodes by characters
+// wrong gusses dicdtionary that can also be sorted by name or character
 const dictionaryModal = type => {
   let $table
   let $h2
@@ -78,6 +90,8 @@ const dictionaryModal = type => {
   openModal()
 }
 
+// what happens when you get them all right
+// alternavitve get which ones you got wrong
 const winModal = () => {
   $('.modal-content').empty().html(`
     <h2>🎉🎊⚡️⭐️✨🌟</h2>
@@ -87,6 +101,7 @@ const winModal = () => {
   openModal()
 }
 
+// builds a table based on data passed in from dictionaryModal
 const tableBuilder = (dictionaryInput) => {
   const $table = $('<table>')
   const $tableHeader = $('<tr>')
@@ -110,6 +125,7 @@ const tableBuilder = (dictionaryInput) => {
   return $table
 }
 
+// document on ready - make sure page loads before selecting these items
 $(() => {
   newGame()
   $('body').keyup(checkPair)

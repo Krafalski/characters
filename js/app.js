@@ -1,10 +1,21 @@
 /* global dictionary loadRound dictionaryModal event animateWrong animateCorrect */
+// the array of Character class objects to be played
 let playArray = []
+// the current object in play
 let inPlay = {}
+// Moves along the play array each round
 let playPosition = 0
+// total right
 let score = 0
+// create another, same structure as dicitionary,
+// dictionary of wrong answers
+// for player to view at the end of the game
 let wrongGuesses = {}
 
+// create a class for the characters to track details of each one
+// splits the character name and character into instance variables
+// collects whether or not the player guessed right
+// collects what the user inputted (not currently used/has feature built)
 class Character {
   constructor (name, character) {
     this.character = character
@@ -13,6 +24,7 @@ class Character {
     this.correct = null
     this.play = ''
   }
+  // takes camelCase names and makes them into separate strings to be more readable for the player
   reformatName (name) {
     const rename = name.split('')
     const testForCaps = /[A-Z]/
@@ -24,6 +36,10 @@ class Character {
     })
     return newName.join('')
   }
+  // checks player move
+  // deals with the smartquote
+  // increases score
+  // sets player's input for comparison later (not yet built)
   checkInput (input) {
     this.play = input
     if (this.key === 'smartQuote') {
@@ -38,6 +54,9 @@ class Character {
   }
 }
 
+// leverage same function in Character class
+// to be able to make a table of charactrers and names
+// that matches what the user sees
 const reformatNameForModal = name => {
   const rename = name.split('')
   const testForCaps = /[A-Z]/
@@ -50,6 +69,9 @@ const reformatNameForModal = name => {
   return newName.join('')
 }
 
+// sort dictionary by name for the table
+// trigger on mouseover on table header of `name`
+// keeps same stucture as original dictionary
 // https://stackoverflow.com/questions/5467129/sort-javascript-object-by-key
 const dictionarySortByName = (unsortedDictionary) => {
   const sortedDictionary = {}
@@ -59,6 +81,9 @@ const dictionarySortByName = (unsortedDictionary) => {
   return sortedDictionary
 }
 
+// sort dictionary by character for the table
+// trigger on mouseover on table header of `character`
+// keeps same structure as dictioary
 // https://stackoverflow.com/questions/1069666/sorting-javascript-object-by-property-value
 const dictionarySortByCharacter = (unsortedDicitonary) => {
   const sortable = []
@@ -76,6 +101,9 @@ const dictionarySortByCharacter = (unsortedDicitonary) => {
 }
 
 // return valid play
+// ignores many keys not in play to prevent users accidentally making a wrong play
+// all letters and numbers, and most function keys
+// tab takes focus off main window - can't be played anyway
 const allowPlay = keyPress => {
   const letterCheck = /[a-z0-9]/i
   let specialKeys = ['Escape', 'CapsLock', 'Shift', 'Control', 'Alt', 'Meta', 'Backspace', 'Enter']
@@ -90,6 +118,10 @@ const allowPlay = keyPress => {
   return true
 }
 
+// starts a new game
+// resets global variables
+// makes a new array of character Class based on dictionary
+// kicks off first round
 const newGame = () => {
   playArray = []
   playPosition = 0
@@ -103,7 +135,7 @@ const newGame = () => {
   loadRound()
 }
 
-// fisher-yates shuffle
+// fisher-yates shuffle to shuffle the Charactrer array
 // https://bost.ocks.org/mike/shuffle/
 const shuffle = array => {
   let m = array.length
@@ -122,6 +154,9 @@ const shuffle = array => {
   return array
 }
 
+// prepare for next Character
+// checks if game is over
+// shows wrong plays before launching new game
 const nextRound = () => {
   if (playArray.length - 1 > playPosition) {
     playPosition++
@@ -134,6 +169,9 @@ const nextRound = () => {
   }
 }
 
+// checks for valid play
+// checks for correcy play
+// triggers jQuery DOM updates based on play
 const checkPair = () => {
   if (allowPlay(event.key)) {
     inPlay.checkInput(event.key)

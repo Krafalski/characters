@@ -1,3 +1,5 @@
+// Characters to be be test
+// characters with names that are camelCase will be parsed into separate words
 const dictionary = {
   tilda: '~',
   backtick: '`',
