@@ -49,7 +49,7 @@ class Character {
       }
     } else {
       this.correct = (input === this.character)
-      if (this.correct){
+      if (this.correct) {
         score++
       } else {
         console.log('correct answer:', this.character)
@@ -192,6 +192,6 @@ const checkPair = () => {
     setTimeout(nextRound, 2000)
     setTimeout(loadRound, 2001)
     // start logging key presses again
-    setTimeout(turnOnPlay, 2002)
+    setTimeout(turnOnPlay, 2006)
   }
 }

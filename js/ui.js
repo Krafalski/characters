@@ -6,7 +6,7 @@
 const loadRound = () => {
   let $character = $('.character')
   let $name = $('.name')
-  $character.html(`<h4>${inPlay.character}</h4>`)
+  $character.html(`<input autofocus/><h4>${inPlay.character}</h4>`)
     .css('opacity', 0)
   $name.html(`<h4>${inPlay.name}</h4>`)
   $('.correct').text(score)
@@ -108,11 +108,11 @@ const winModal = () => {
 const tableBuilder = (dictionaryInput) => {
   const $table = $('<table>')
   const $tableHeader = $('<tr>')
-  const $tableHeaderName = $('<th>').text('name').on('mouseenter',()=>{
+  const $tableHeaderName = $('<th>').text('name').on('mouseenter', () => {
     $('.modal-content').empty()
     dictionaryModal('name')
   })
-  const $tableHeaderCharacter = $('<th>').text('character').on('mouseenter',()=>{
+  const $tableHeaderCharacter = $('<th>').text('character').on('mouseenter', () => {
     $('.modal-content').empty()
     dictionaryModal('character')
   })
@@ -136,7 +136,6 @@ const turnOnPlay = () => {
 
 // document on ready - make sure page loads before selecting these items
 $(() => {
-
   newGame()
   $('body').on('keyup', checkPair)
   $('.start').on('click', newGame)

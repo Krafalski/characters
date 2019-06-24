@@ -118,3 +118,7 @@ th {
   padding: 1em;
   white-space: nowrap;
 }
+
+input {
+  display: none;
+}
