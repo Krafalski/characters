@@ -193,5 +193,7 @@ const checkPair = () => {
     setTimeout(loadRound, 2001)
     // start logging key presses again
     setTimeout(turnOnPlay, 2006)
+  } else {
+    turnOnPlay();
   }
 }
